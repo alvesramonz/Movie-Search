@@ -1,9 +1,21 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-// import { Container } from './styles';
+import Routes from './routes/routes';
 
-function src() {
-  return (<div>Coé</div>)
+import GlobalStyle from './styles/global';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Header />
+      <Routes />
+      <GlobalStyle />
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
-export default src;
+export default App;
