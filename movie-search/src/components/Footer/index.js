@@ -5,7 +5,7 @@ import { Container } from './styles';
 function Footer() {
   return (
     <Container>
-      &copy; {new Date().getFullYear()}, made with{' React '}
+      &copy; {new Date().getFullYear()}, made
       by <a href="http://github.com/alvesramonz">Ramon Alves</a>
     </Container>
   );

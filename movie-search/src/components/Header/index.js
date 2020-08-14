@@ -5,7 +5,7 @@ import { Container } from './styles';
 function Header() {
   return (
     <Container>
-      <h1>Cabeçalho</h1>
+      <h1>MovieDB</h1>
     </Container>
   )
 }
