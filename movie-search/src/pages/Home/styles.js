@@ -7,6 +7,12 @@ export const MovieList = styled.div`
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
 
+  a {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
   li {
     display: flex;
     flex-direction: column;

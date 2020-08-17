@@ -10,6 +10,10 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   body {
     background: #000;
     -webkit-font-smoothing: antialiased;
@@ -24,11 +28,10 @@ export default createGlobalStyle`
   }
 
   #root {
-    max-width: 1020px;
+    max-width: 1154px;
     margin: 0 auto;
     padding: 0 20px 50px;
   }
-
 
   button {
     cursor: pointer;
