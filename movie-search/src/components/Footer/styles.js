@@ -5,8 +5,8 @@ export const Container = styled.footer`
   color: #a9a9a9;
   text-align: center;
   width: 100%;
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin-top: 4%;
+  margin-bottom: 4%;
 
   a,
   a:active,
