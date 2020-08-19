@@ -1,9 +1,33 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
-import { Container, MovieDetail, MovieCast, Recommendations } from './styles';
+import { Container, MovieDetail, Recommendations } from './styles';
 
-function Movie({ movie, movieBackPoster }) {
+import { fetchRecommendations } from '../../services/api';
+
+import * as MovieAction from '../../store/modules/movie/actions';
+
+function Movie({ movie }) {
+  const [movieRecommendations, setMovieRecommendations] = useState([]);
+
+  const { id } = useParams();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const loadRecommendations = async () => {
+      setMovieRecommendations(await fetchRecommendations(id));
+    };
+
+    loadRecommendations();
+  }, [id]);
+
+  function handleMovieInfo(movie) {
+    dispatch(MovieAction.movieInfo(movie));
+  }
+
   return (
     <Container>
       <MovieDetail>
@@ -20,23 +44,26 @@ function Movie({ movie, movieBackPoster }) {
         </div>
       </MovieDetail>
 
-      <MovieCast>
-        <div className="thread-actors">
-          <h3>Actors</h3>
-        </div>
-        <div className="movie-actors">
-
-        </div>
-      </MovieCast>
-
-      <Recommendations></Recommendations>
+      <h3>Recommendations</h3>
+      <Recommendations>
+        {movieRecommendations.map((m) => (
+          <Link to={`/movie/${m.id}`} onClick={() => handleMovieInfo(m)}>
+            <li key={m.id}>
+              <img style={{ height: 300 }} src={m.poster} alt={m.title} />
+              {/* <span className="card-rating">{m.rating}</span> */}
+              <div className="card-body">
+                <strong>{m.title}</strong>
+              </div>
+            </li>
+          </Link>
+        ))}
+      </Recommendations>
     </Container>
   );
 }
 
 const mapStateToProps = (state) => ({
   movie: state.movie,
-  movieBackPoster: state.movie.backPoster,
 });
 
 export default connect(mapStateToProps)(Movie);

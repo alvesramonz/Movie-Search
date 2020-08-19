@@ -9,6 +9,12 @@ function Header() {
       <Link to="/">
         <h1>MovieDB</h1>
       </Link>
+
+      <input
+        name="search"
+        type="text"
+        placeholder="Search by movie title"
+      ></input>
     </Container>
   );
 }

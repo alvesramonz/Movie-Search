@@ -8,6 +8,9 @@ export const MovieList = styled.div`
   grid-gap: 15px;
 
   a {
+    background: #711324;
+    border-radius: 4px;
+
     &:hover {
       opacity: 0.7;
     }
@@ -16,8 +19,6 @@ export const MovieList = styled.div`
   li {
     display: flex;
     flex-direction: column;
-    background: #711324;
-    border-radius: 4px;
     padding: 5px;
     align-items: center;
 

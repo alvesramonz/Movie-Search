@@ -6,7 +6,6 @@ import {
   fetchPopularMovies,
   fetchTopRatedMovies,
   fetchNowPlayingMovies,
-  fetchLatestMovies,
 } from '../../services/api';
 
 import { Container, MovieList, SortMovies } from './styles';
@@ -14,23 +13,33 @@ import { Container, MovieList, SortMovies } from './styles';
 import * as MovieAction from '../../store/modules/movie/actions';
 
 function Home() {
-  const [popularMovies, setPopularMovies] = useState([]);
-  const [topRatedMovies, setTopRatedMovies] = useState([]);
-  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
-  const [latestMovies, setLatestMovies] = useState([]);
+  const [movieList, setMovieList] = useState([]);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     const loadApi = async () => {
-      setPopularMovies(await fetchPopularMovies());
-      setTopRatedMovies(await fetchTopRatedMovies());
-      setNowPlayingMovies(await fetchNowPlayingMovies());
-      setLatestMovies(await fetchLatestMovies());
+      setMovieList(await fetchPopularMovies());
     };
 
     loadApi();
   }, []);
+
+  const handleSortMovies = async (sortType) => {
+    switch (sortType) {
+      case 1:
+        setMovieList(await fetchPopularMovies());
+        break;
+      case 2:
+        setMovieList(await fetchTopRatedMovies());
+        break;
+      case 3:
+        setMovieList(await fetchNowPlayingMovies());
+        break;
+      default:
+        setMovieList(await fetchPopularMovies());
+    }
+  };
 
   function handleMovieInfo(movie) {
     dispatch(MovieAction.movieInfo(movie));
@@ -39,14 +48,20 @@ function Home() {
   return (
     <Container>
       <SortMovies>
-        <button type="button">Popular</button>
-        <button type="button">Top Rated</button>
-        <button type="button">Now Playing</button>
-        <button type="button">Latest</button>
+        <button type="button" onClick={() => handleSortMovies(1)}>
+          Popular
+        </button>
+        <button type="button" onClick={() => handleSortMovies(2)}>
+          Top Rated
+        </button>
+        <button type="button" onClick={() => handleSortMovies(3)}>
+          Now Playing
+        </button>
       </SortMovies>
+
       <MovieList>
-        {popularMovies.map((m) => (
-          <Link to="/movie" onClick={() => handleMovieInfo(m)}>
+        {movieList.map((m) => (
+          <Link to={`/movie/${m.id}`} onClick={() => handleMovieInfo(m)}>
             <li key={m.id}>
               <img style={{ height: 300 }} src={m.poster} alt={m.title} />
               {/* <span className="card-rating">{m.rating}</span> */}
@@ -62,5 +77,3 @@ function Home() {
 }
 
 export default connect()(Home);
-
-//https://api.themoviedb.org/3/movie/612706?api_key=7d6600758773a0a23c5e6c6fb2d27931

@@ -4,12 +4,27 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-right: 15px;
-  padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
   max-width: 1140px;
   box-sizing: border-box; /* Questionavel */
+
+  h3 {
+    padding-top: 40px;
+    color: #adb5bd;
+    font-size: 2em;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    margin-top: 0;
+    box-sizing: border-box;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    display: block;
+  }
 `;
 
 export const MovieDetail = styled.div`
@@ -54,40 +69,53 @@ export const MovieDetail = styled.div`
   }
 `;
 
-export const MovieCast = styled.div`
-  background-color: #fff;
-  padding: 30px 0 0 30px;
-  box-sizing: border-box;
+export const Recommendations = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 15px;
 
-  .thread-actors {
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    align-items: center;
-
-    h3 {
-      color: #343a40;
-      font-size: 2em;
-      font-weight: 300;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-      margin-top: 0;
-      box-sizing: border-box;
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
-      display: block;
+  a {
+    &:hover {
+      opacity: 0.7;
     }
   }
 
-  .movie-actors {
+  li {
     display: flex;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex-wrap: wrap;
+    flex-direction: column;
+    background: #711324;
+    border-radius: 4px;
+    padding: 5px;
+    align-items: center;
+
+    img {
+      align-self: center;
+      max-width: 250px;
+      border-radius: 3px;
+    }
+
+    .card-body {
+      > strong {
+        font-size: 14px;
+        line-height: 20px;
+        color: #fff;
+        margin-top: 5px;
+      }
+    }
+
+    .card-rating {
+      right: 7px;
+      top: 7px;
+      background-color: #212529;
+      padding: 5px;
+      color: #ffc107;
+      text-align: center;
+      display: block;
+      z-index: 100;
+      min-width: 35px;
+      font-size: 0.8em;
+      border-radius: 50%;
+      border: 2px solid #343a40;
+    }
   }
 `;
-
-export const Recommendations = styled.div``;
