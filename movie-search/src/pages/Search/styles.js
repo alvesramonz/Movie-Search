@@ -1,14 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1140px;
-  box-sizing: border-box; /* Questionavel */
-
   h3 {
     padding-top: 40px;
     color: #adb5bd;
@@ -27,59 +19,16 @@ export const Container = styled.div`
   }
 `;
 
-export const MovieDetail = styled.div`
-  margin-top: 50px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #dee2e6;
-  position: relative;
-  display: grid;
-  grid-template:
-    'image info'
-    'image stat';
-  justify-content: start;
-  grid-template-columns: 300px 1fr;
-  background: #711324;
-  border-radius: 4px;
-
-
-  .movie-img {
-    width: 300px;
-    grid-area: image;
-    vertical-align: middle;
-    border-style: none;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
-  }
-
-  .movie-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1rem;
-    align-items: flex-start;
-    box-sizing: border-box;
-  }
-
-  .movie-stats {
-    background-color: rgba(0, 0, 0, 0.8);
-    width: 100%;
-    padding: 15px;
-    font-size: 1em;
-    color: #adb5bd;
-    grid-area: stat;
-    align-self: end;
-    align-items: center;
-    justify-content: space-between;
-    display: flex;
-  }
-`;
-
-export const Recommendations = styled.div`
+export const MovieList = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
+  margin-top: 30px;
 
   a {
+    background: #711324;
+    border-radius: 4px;
+
     &:hover {
       opacity: 0.7;
     }
@@ -88,8 +37,6 @@ export const Recommendations = styled.div`
   li {
     display: flex;
     flex-direction: column;
-    background: #711324;
-    border-radius: 4px;
     padding: 5px;
     align-items: center;
 
